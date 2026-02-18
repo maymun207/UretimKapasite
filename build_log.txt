@@ -1,0 +1,243 @@
+
+> uretim-kapasite-calculator@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 6 errors:
+./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs:1:1
+Export GroupPlaybackControls doesn't exist in target module
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { getValueTransition[33m,[39m [33mGroupPlaybackControls[39m } [36mfrom[39m [32m'motion-dom'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m { secondsToMilliseconds } [36mfrom[39m [32m'motion-utils'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { frame } [36mfrom[39m [32m'../../frameloop/frame.mjs'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { [33mMotionGlobalConfig[39m } [36mfrom[39m [32m'../../utils/GlobalConfig.mjs'[39m[33m;[39m[0m
+
+The export GroupPlaybackControls was not found in module [project]/node_modules/motion-dom/dist/es/index.mjs [app-client] (ecmascript).
+Did you mean to import copyBoxInto?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+
+./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs:1:1
+Export GroupPlaybackControls doesn't exist in target module
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { getValueTransition[33m,[39m [33mGroupPlaybackControls[39m } [36mfrom[39m [32m'motion-dom'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m { secondsToMilliseconds } [36mfrom[39m [32m'motion-utils'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { frame } [36mfrom[39m [32m'../../frameloop/frame.mjs'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { [33mMotionGlobalConfig[39m } [36mfrom[39m [32m'../../utils/GlobalConfig.mjs'[39m[33m;[39m[0m
+
+The export GroupPlaybackControls was not found in module [project]/node_modules/motion-dom/dist/es/index.mjs [app-ssr] (ecmascript).
+Did you mean to import copyBoxInto?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+
+./node_modules/framer-motion/dist/es/animation/animators/AcceleratedAnimation.mjs:1:1
+Export attachTimeline doesn't exist in target module
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { supportsLinearEasing[33m,[39m attachTimeline[33m,[39m isGenerator[33m,[39m isWaapiSupportedEasing } [36mfrom[39m [32m'motion-dom'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m { millisecondsToSeconds[33m,[39m secondsToMilliseconds[33m,[39m noop } [36mfrom[39m [32m'motion-utils'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { anticipate } [36mfrom[39m [32m'../../easing/anticipate.mjs'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { backInOut } [36mfrom[39m [32m'../../easing/back.mjs'[39m[33m;[39m[0m
+
+The export attachTimeline was not found in module [project]/node_modules/motion-dom/dist/es/index.mjs [app-client] (ecmascript).
+Did you mean to import time?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/framer-motion/dist/es/animation/animators/AcceleratedAnimation.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/framer-motion/dist/es/animation/animators/AcceleratedAnimation.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+
+./node_modules/framer-motion/dist/es/animation/animators/AcceleratedAnimation.mjs:1:1
+Export attachTimeline doesn't exist in target module
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { supportsLinearEasing[33m,[39m attachTimeline[33m,[39m isGenerator[33m,[39m isWaapiSupportedEasing } [36mfrom[39m [32m'motion-dom'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m { millisecondsToSeconds[33m,[39m secondsToMilliseconds[33m,[39m noop } [36mfrom[39m [32m'motion-utils'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { anticipate } [36mfrom[39m [32m'../../easing/anticipate.mjs'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { backInOut } [36mfrom[39m [32m'../../easing/back.mjs'[39m[33m;[39m[0m
+
+The export attachTimeline was not found in module [project]/node_modules/motion-dom/dist/es/index.mjs [app-ssr] (ecmascript).
+Did you mean to import time?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/framer-motion/dist/es/animation/animators/AcceleratedAnimation.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/framer-motion/dist/es/animation/animators/AcceleratedAnimation.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+
+./node_modules/framer-motion/dist/es/easing/utils/map.mjs:1:1
+Export isBezierDefinition doesn't exist in target module
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { isBezierDefinition } [36mfrom[39m [32m'motion-dom'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m { invariant[33m,[39m noop } [36mfrom[39m [32m'motion-utils'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { anticipate } [36mfrom[39m [32m'../anticipate.mjs'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { backIn[33m,[39m backInOut[33m,[39m backOut } [36mfrom[39m [32m'../back.mjs'[39m[33m;[39m[0m
+
+The export isBezierDefinition was not found in module [project]/node_modules/motion-dom/dist/es/index.mjs [app-client] (ecmascript).
+Did you mean to import setFeatureDefinitions?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/framer-motion/dist/es/easing/utils/map.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/generators/keyframes.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/animators/MainThreadAnimation.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/framer-motion/dist/es/easing/utils/map.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/generators/keyframes.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/animators/MainThreadAnimation.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+
+./node_modules/framer-motion/dist/es/easing/utils/map.mjs:1:1
+Export isBezierDefinition doesn't exist in target module
+[0m[31m[1m>[22m[39m[90m 1 |[39m [36mimport[39m { isBezierDefinition } [36mfrom[39m [32m'motion-dom'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 2 |[39m [36mimport[39m { invariant[33m,[39m noop } [36mfrom[39m [32m'motion-utils'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m { anticipate } [36mfrom[39m [32m'../anticipate.mjs'[39m[33m;[39m
+ [90m 4 |[39m [36mimport[39m { backIn[33m,[39m backInOut[33m,[39m backOut } [36mfrom[39m [32m'../back.mjs'[39m[33m;[39m[0m
+
+The export isBezierDefinition was not found in module [project]/node_modules/motion-dom/dist/es/index.mjs [app-ssr] (ecmascript).
+Did you mean to import setFeatureDefinitions?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/framer-motion/dist/es/easing/utils/map.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/generators/keyframes.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/animators/MainThreadAnimation.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component Browser]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component Browser]
+    ./src/app/page.tsx [Client Component Browser]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/framer-motion/dist/es/easing/utils/map.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/generators/keyframes.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/animators/MainThreadAnimation.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/interfaces/motion-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/animation/animate/single-value.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/create-projection-node.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/projection/node/HTMLProjectionNode.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/motion/features/layout.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/create.mjs [Client Component SSR]
+    ./node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [Client Component SSR]
+    ./src/app/page.tsx [Client Component SSR]
+    ./src/app/page.tsx [Server Component]
+
+
+    at ignore-listed frames
