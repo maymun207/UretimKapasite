@@ -1,0 +1,143 @@
+{
+    "app": {
+        "title": "ARDIC SENTINEL",
+        "subtitle": "Üretim Kapasite Zekası"
+    },
+    "lang": {
+        "en": "EN",
+        "tr": "TR"
+    },
+    "landing": {
+        "badge": "Kapasite Zekası Modeli 5.0",
+        "headline": "Üretim Kapasite Hesaplayıcı",
+        "description": "Teorik üretim kapasitenizi gerçek çıktınızla hesaplayın ve karşılaştırın. Kesikli süreç endüstrileri ve ayrık/sürekli üretim desteklenir.",
+        "features": {
+            "batch": "Kesikli Süreç Analizi",
+            "batchDesc": "Kimya, seramik, boya, gıda & içecek, ilaç",
+            "discrete": "Ayrık Süreç",
+            "discreteDesc": "Montaj hatları, CNC işleme, paketleme",
+            "bottleneck": "Darboğaz Tespiti",
+            "bottleneckDesc": "Üretim zincirinizin en zayıf halkasını bulun",
+            "bilingual": "Çift Dil Desteği",
+            "bilingualDesc": "Tam İngilizce ve Türkçe arayüz"
+        },
+        "cta": "Hesaplamaya Başla"
+    },
+    "step": {
+        "processType": "Süreç Tipi",
+        "parameters": "Parametreler",
+        "results": "Sonuçlar"
+    },
+    "processType": {
+        "title": "Süreç Tipinizi Seçin",
+        "subtitle": "Operasyonunuzu en iyi tanımlayan üretim sürecini seçin.",
+        "batch": "Kesikli Süreç",
+        "batchDesc": "Ayrı partiler halinde üretim — kimyasal reaksiyonlar, karıştırma, fermantasyon, kaplama, pişirme. Her partinin sabit bir boyutu ve işlem süresi vardır.",
+        "discrete": "Ayrık Süreç",
+        "discreteDesc": "Birim birim üretim — montaj hatları, CNC işleme, enjeksiyon kalıplama, paketleme. Her birimin bir çevrim süresi vardır.",
+        "back": "Geri"
+    },
+    "form": {
+        "title": "Üretim Parametreleri",
+        "batchTitle": "Kesikli Süreç — Üretim Parametreleri",
+        "discreteTitle": "Ayrık Süreç — Üretim Parametreleri",
+        "subtitle": "Kapasiteyi hesaplamak için üretim hattı detaylarınızı girin.",
+        "common": {
+            "lines": "Üretim Hattı Sayısı",
+            "linesTooltip": "Paralel üretim hattı veya makine sayısı",
+            "shifts": "Günlük Vardiya",
+            "shiftsTooltip": "24 saatlik dönemdeki iş vardiyası sayısı",
+            "hoursPerShift": "Vardiya Başına Saat",
+            "hoursTooltip": "Her vardiyada üretken saat sayısı",
+            "availability": "Kullanılabilirlik Faktörü (A)",
+            "availabilityTooltip": "Planlanan sürenin ekipmanın kullanılabilir olduğu oranı (0–1). Arızaları ve plansız duruşları hesaplar.",
+            "efficiency": "Verimlilik Faktörü (E)",
+            "efficiencyTooltip": "Gerçek hızın ideal hıza oranı (0–1). Yavaş çevrimleri ve küçük duruşları hesaplar.",
+            "yieldRate": "Kalite / Verim Oranı",
+            "yieldTooltip": "Kalite standartlarını karşılayan çıktı oranı (0–1). Hurda ve yeniden işlemeyi hesaplar."
+        },
+        "batch": {
+            "sectionTitle": "Kesikli Süreç Parametreleri",
+            "batchSize": "Parti Boyutu (Q)",
+            "batchSizeTooltip": "Parti başına üretilen birim sayısı veya hacim",
+            "batchSizeUnit": "birim/parti",
+            "batchTime": "Parti İşlem Süresi (Tb)",
+            "batchTimeTooltip": "Bir partiyi tamamlamak için gereken toplam süre (kurulum, işleme ve temizlik dahil)",
+            "batchTimeUnit": "saat",
+            "downtime": "Parti Arası Duruş Süresi",
+            "downtimeTooltip": "Partiler arasında temizlik, değişiklik vb. için ek duruş süresi",
+            "downtimeUnit": "saat",
+            "bottleneckTitle": "Darboğaz Analizi (İsteğe Bağlı)",
+            "addStep": "Adım Ekle",
+            "stepName": "Adım İsmi",
+            "stepCapacity": "Kapasite (birim/sa)",
+            "removeStep": "Kaldır"
+        },
+        "discrete": {
+            "sectionTitle": "Ayrık Süreç Parametreleri",
+            "cycleTime": "Birim Başına Çevrim Süresi (Tc)",
+            "cycleTimeTooltip": "Tüm operasyonlar dahil bir birim üretim süresi",
+            "cycleTimeUnit": "dakika",
+            "outputRate": "Çıkış Hızı (Rp)",
+            "outputRateTooltip": "Saatte üretilen birim sayısı. Çevrim süresi verilmişse boş bırakın — otomatik hesaplanır.",
+            "outputRateUnit": "birim/saat",
+            "bottleneckTitle": "İstasyon Darboğaz Analizi (İsteğe Bağlı)",
+            "addStation": "İstasyon Ekle",
+            "stationName": "İstasyon Adı",
+            "stationCapacity": "Kapasite (birim/sa)",
+            "removeStation": "Kaldır"
+        },
+        "calculate": "Kapasiteyi Hesapla",
+        "back": "Geri"
+    },
+    "results": {
+        "title": "Kapasite Analiz Sonuçları",
+        "subtitle": "Üretim kapasite dağılımınız",
+        "theoretical": "Teorik Maksimum Kapasite",
+        "theoreticalDesc": "İdeal koşullarda mümkün olan maksimum çıktı",
+        "effective": "Efektif Kapasite",
+        "effectiveDesc": "Kullanılabilirlik ve verimlilik dikkate alınarak gerçekçi kapasite",
+        "actual": "Gerçek Satılabilir Çıktı",
+        "actualDesc": "Kalite uyumlu beklenen çıktı",
+        "utilization": "Kapasite Kullanım Oranı",
+        "utilizationDesc": "Gerçek çıktının teorik maksimuma oranı",
+        "bottleneck": "Darboğaz Adımı",
+        "bottleneckDesc": "Genel üretimi kısıtlayan süreç adımı",
+        "bottleneckCapacity": "Kısıtlayıcı kapasite",
+        "noBottleneck": "Darboğaz verisi sağlanmadı",
+        "unitsPerPeriod": "birim/gün",
+        "chart": {
+            "title": "Kapasite Karşılaştırması",
+            "theoretical": "Teorik",
+            "effective": "Efektif",
+            "actual": "Gerçek"
+        },
+        "downloadPDF": "PDF İndir",
+        "downloadCSV": "CSV İndir",
+        "newCalculation": "Yeni Hesaplama",
+        "back": "Geri"
+    },
+    "ai": {
+        "suggest": "AI'ya Sor",
+        "panelTitle": "AI Önerileri",
+        "thinking": "Gemini sektörünüzü analiz ediyor...",
+        "applyAll": "Tüm Önerileri Uygula",
+        "selectIndustryFirst": "Lütfen önce bir sektör seçin.",
+        "industryLabel": "Sektör / Endüstri",
+        "industryPlaceholder": "Sektörünüzü seçin..."
+    },
+    "industries": {
+        "chemical": "Kimya Sanayi",
+        "ceramic": "Seramik & Karo",
+        "paint": "Boya & Kaplama",
+        "food": "Gıda & İçecek",
+        "pharma": "İlaç Sanayi",
+        "automotive": "Otomotiv Parça",
+        "plastic": "Plastik & Enjeksiyon",
+        "packaging": "Ambalaj",
+        "textile": "Tekstil & Konfeksiyon",
+        "metal": "Metal İşleme & CNC",
+        "electronics": "Elektronik Montaj",
+        "glass": "Cam Üretimi"
+    }
+}

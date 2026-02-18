@@ -15,8 +15,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-    title: "ARDIC SENTINEL — Capacity Intelligence Model",
-    description: "Endüstriyel üretim hattı kapasite simülasyonu ve optimizasyon aracı. Ardic Distributed Intelligence Unit.",
+    title: "ARDIC SENTINEL — Manufacturing Capacity Calculator",
+    description:
+        "Calculate and compare theoretical production capacity versus actual output. Supports batch and discrete/continuous manufacturing processes.",
 };
 
 export default function RootLayout({
@@ -25,7 +26,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="tr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
             <body className={inter.className}>{children}</body>
         </html>
     );

@@ -1,0 +1,143 @@
+{
+    "app": {
+        "title": "ARDIC SENTINEL",
+        "subtitle": "Manufacturing Capacity Intelligence"
+    },
+    "lang": {
+        "en": "EN",
+        "tr": "TR"
+    },
+    "landing": {
+        "badge": "Capacity Intelligence Model 5.0",
+        "headline": "Manufacturing Capacity Calculator",
+        "description": "Calculate and compare your theoretical production capacity versus actual output. Supports batch-process industries and discrete/continuous manufacturing.",
+        "features": {
+            "batch": "Batch Process Analysis",
+            "batchDesc": "Chemical, ceramic, paint, food & beverage, pharma",
+            "discrete": "Discrete Process",
+            "discreteDesc": "Assembly lines, CNC machining, packaging",
+            "bottleneck": "Bottleneck Detection",
+            "bottleneckDesc": "Identify the weakest link in your production chain",
+            "bilingual": "Bilingual Support",
+            "bilingualDesc": "Full English and Turkish interface"
+        },
+        "cta": "Start Calculation"
+    },
+    "step": {
+        "processType": "Process Type",
+        "parameters": "Parameters",
+        "results": "Results"
+    },
+    "processType": {
+        "title": "Select Your Process Type",
+        "subtitle": "Choose the manufacturing process that best describes your operation.",
+        "batch": "Batch Process",
+        "batchDesc": "Production in discrete batches — chemical reactions, mixing, fermentation, coating, baking. Each batch has a fixed size and processing time.",
+        "discrete": "Discrete Process",
+        "discreteDesc": "Unit-by-unit production — assembly lines, CNC machining, injection molding, packaging. Each unit has a cycle time.",
+        "back": "Back"
+    },
+    "form": {
+        "title": "Production Parameters",
+        "batchTitle": "Batch Processing — Production Parameters",
+        "discreteTitle": "Discrete Processing — Production Parameters",
+        "subtitle": "Enter your production line details to calculate capacity.",
+        "common": {
+            "lines": "Production Lines",
+            "linesTooltip": "Number of parallel production lines or machines",
+            "shifts": "Shifts per Day",
+            "shiftsTooltip": "Number of work shifts in a 24-hour period",
+            "hoursPerShift": "Hours per Shift",
+            "hoursTooltip": "Productive hours in each shift",
+            "availability": "Availability Factor (A)",
+            "availabilityTooltip": "Proportion of scheduled time the equipment is available (0–1). Accounts for breakdowns and unplanned stops.",
+            "efficiency": "Efficiency Factor (E)",
+            "efficiencyTooltip": "Ratio of actual speed to ideal speed (0–1). Accounts for slow cycles and minor stoppages.",
+            "yieldRate": "Yield / Quality Rate",
+            "yieldTooltip": "Proportion of output that meets quality standards (0–1). Accounts for scrap and rework."
+        },
+        "batch": {
+            "sectionTitle": "Batch Parameters",
+            "batchSize": "Batch Size (Q)",
+            "batchSizeTooltip": "Number of units or volume produced per batch",
+            "batchSizeUnit": "units/batch",
+            "batchTime": "Batch Processing Time (Tb)",
+            "batchTimeTooltip": "Total time to complete one batch including setup, processing, and teardown",
+            "batchTimeUnit": "hours",
+            "downtime": "Downtime per Batch",
+            "downtimeTooltip": "Additional downtime between batches for cleaning, changeover, etc.",
+            "downtimeUnit": "hours",
+            "bottleneckTitle": "Bottleneck Analysis (Optional)",
+            "addStep": "Add Process Step",
+            "stepName": "Step Name",
+            "stepCapacity": "Capacity (units/hr)",
+            "removeStep": "Remove"
+        },
+        "discrete": {
+            "sectionTitle": "Discrete Process Parameters",
+            "cycleTime": "Cycle Time per Unit (Tc)",
+            "cycleTimeTooltip": "Time to produce one unit including all operations",
+            "cycleTimeUnit": "minutes",
+            "outputRate": "Output Rate (Rp)",
+            "outputRateTooltip": "Units produced per hour. Leave blank if cycle time is provided — it will be calculated automatically.",
+            "outputRateUnit": "units/hour",
+            "bottleneckTitle": "Station Bottleneck Analysis (Optional)",
+            "addStation": "Add Station",
+            "stationName": "Station Name",
+            "stationCapacity": "Capacity (units/hr)",
+            "removeStation": "Remove"
+        },
+        "calculate": "Calculate Capacity",
+        "back": "Back"
+    },
+    "results": {
+        "title": "Capacity Analysis Results",
+        "subtitle": "Your production capacity breakdown",
+        "theoretical": "Theoretical Max Capacity",
+        "theoreticalDesc": "Maximum possible output under ideal conditions",
+        "effective": "Effective Capacity",
+        "effectiveDesc": "Realistic capacity considering availability and efficiency",
+        "actual": "Actual Saleable Output",
+        "actualDesc": "Expected quality-compliant output",
+        "utilization": "Capacity Utilization",
+        "utilizationDesc": "Ratio of actual output to theoretical maximum",
+        "bottleneck": "Bottleneck Step",
+        "bottleneckDesc": "The process step limiting your overall throughput",
+        "bottleneckCapacity": "Limiting capacity",
+        "noBottleneck": "No bottleneck data provided",
+        "unitsPerPeriod": "units/day",
+        "chart": {
+            "title": "Capacity Comparison",
+            "theoretical": "Theoretical",
+            "effective": "Effective",
+            "actual": "Actual"
+        },
+        "downloadPDF": "Download PDF",
+        "downloadCSV": "Download CSV",
+        "newCalculation": "New Calculation",
+        "back": "Back"
+    },
+    "ai": {
+        "suggest": "Ask AI",
+        "panelTitle": "AI Suggestions",
+        "thinking": "Gemini is analyzing your industry...",
+        "applyAll": "Accept All Suggestions",
+        "selectIndustryFirst": "Please select an industry first.",
+        "industryLabel": "Industry / Sector",
+        "industryPlaceholder": "Select your industry..."
+    },
+    "industries": {
+        "chemical": "Chemical Manufacturing",
+        "ceramic": "Ceramic & Tile",
+        "paint": "Paint & Coatings",
+        "food": "Food & Beverage",
+        "pharma": "Pharmaceutical",
+        "automotive": "Automotive Parts",
+        "plastic": "Plastics & Injection Molding",
+        "packaging": "Packaging",
+        "textile": "Textile & Apparel",
+        "metal": "Metal Fabrication & CNC",
+        "electronics": "Electronics Assembly",
+        "glass": "Glass Manufacturing"
+    }
+}
