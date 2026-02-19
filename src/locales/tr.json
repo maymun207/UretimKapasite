@@ -192,6 +192,21 @@
         "industryLabel": "Sektör / Endüstri",
         "industryPlaceholder": "Sektörünüzü seçin..."
     },
+    "chat": {
+        "title": "Üretim AI Asistanı",
+        "subtitle": "Gemini tarafından desteklenmektedir",
+        "placeholder": "Üretiminiz hakkında her şeyi sorabilirsiniz...",
+        "send": "Gönder",
+        "clear": "Sohbeti Temizle",
+        "thinking": "Düşünüyor...",
+        "errorMessage": "Bir hata oluştu. Lütfen tekrar deneyin.",
+        "suggestions": [
+            "OEE nedir?",
+            "Duruş süresi nasıl azaltılır?",
+            "Kesikli ve ayrık üretim farkı?",
+            "Verim oranı nasıl artırılır?"
+        ]
+    },
     "industries": {
         "chemical": "Kimya Sanayi",
         "ceramic": "Seramik & Karo",

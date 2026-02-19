@@ -192,6 +192,21 @@
         "industryLabel": "Industry / Sector",
         "industryPlaceholder": "Select your industry..."
     },
+    "chat": {
+        "title": "Manufacturing AI Agent",
+        "subtitle": "Powered by Gemini",
+        "placeholder": "Ask me anything about your production...",
+        "send": "Send",
+        "clear": "Clear Chat",
+        "thinking": "Thinking...",
+        "errorMessage": "Something went wrong. Please try again.",
+        "suggestions": [
+            "What is OEE?",
+            "How to reduce downtime?",
+            "Batch vs discrete: key differences?",
+            "How to improve yield rate?"
+        ]
+    },
     "industries": {
         "chemical": "Chemical Manufacturing",
         "ceramic": "Ceramic & Tile",

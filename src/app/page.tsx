@@ -10,6 +10,7 @@ import LandingHero from "@/components/LandingHero";
 import BatchForm from "@/components/BatchForm";
 import DiscreteForm from "@/components/DiscreteForm";
 import ResultsPanel from "@/components/ResultsPanel";
+import AIChat from "@/components/AIChat";
 
 import {
     BatchInputs,
@@ -205,6 +206,16 @@ export default function Home() {
                     ARDIC Distributed Intelligence Unit © 2025
                 </p>
             </footer>
+
+            {/* Gem-like AI Chat Agent — always visible */}
+            <AIChat
+                context={{
+                    processType,
+                    country,
+                    results,
+                    costResults,
+                }}
+            />
         </div>
     );
 }
