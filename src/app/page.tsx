@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import "../i18n";
 import { useTranslation } from "react-i18next";
 
 import LanguageToggle from "@/components/LanguageToggle";
 import LandingHero from "@/components/LandingHero";
-import ProcessTypeSelector from "@/components/ProcessTypeSelector";
 import BatchForm from "@/components/BatchForm";
 import DiscreteForm from "@/components/DiscreteForm";
 import ResultsPanel from "@/components/ResultsPanel";
@@ -15,9 +14,13 @@ import ResultsPanel from "@/components/ResultsPanel";
 import {
     BatchInputs,
     DiscreteInputs,
+    CostInputs,
+    CostResults,
     CapacityResults,
     calculateBatchCapacity,
     calculateDiscreteCapacity,
+    calculateBatchCost,
+    calculateDiscreteCost,
 } from "@/lib/calculations";
 
 import { Scan } from "lucide-react";
@@ -25,15 +28,15 @@ import { Scan } from "lucide-react";
 /* ═══════════════════════════════════════════════════════════════
    Step indicator — shows progress through the wizard
    ═══════════════════════════════════════════════════════════════ */
-type Step = "landing" | "processType" | "form" | "results";
+type Step = "landing" | "form" | "results";
 
-const STEP_ORDER: Step[] = ["processType", "form", "results"];
+const STEP_ORDER: Step[] = ["form", "results"];
 
 function StepIndicator({ current }: { current: Step }) {
     const { t } = useTranslation();
     if (current === "landing") return null;
 
-    const labels = [t("step.processType"), t("step.parameters"), t("step.results")];
+    const labels = [t("step.parameters"), t("step.results")];
     const currentIdx = STEP_ORDER.indexOf(current);
 
     return (
@@ -42,16 +45,16 @@ function StepIndicator({ current }: { current: Step }) {
                 const isActive = i === currentIdx;
                 const isDone = i < currentIdx;
                 return (
-                    <React.Fragment key={step}>
+                    <div key={step} className="contents">
                         {i > 0 && (
                             <div className={`w-8 h-[1px] ${isDone ? "bg-ardic-cyan/40" : "bg-white/8"} transition-colors duration-500`} />
                         )}
                         <div className="flex items-center gap-2">
                             <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[9px] font-black transition-all duration-500 ${isActive
-                                    ? "bg-ardic-cyan/20 border border-ardic-cyan/40 text-ardic-cyan shadow-[0_0_15px_rgba(0,209,255,0.15)]"
-                                    : isDone
-                                        ? "bg-ardic-cyan/10 border border-ardic-cyan/20 text-ardic-cyan/60"
-                                        : "bg-white/3 border border-white/8 text-white/20"
+                                ? "bg-ardic-cyan/20 border border-ardic-cyan/40 text-ardic-cyan shadow-[0_0_15px_rgba(0,209,255,0.15)]"
+                                : isDone
+                                    ? "bg-ardic-cyan/10 border border-ardic-cyan/20 text-ardic-cyan/60"
+                                    : "bg-white/3 border border-white/8 text-white/20"
                                 }`}>
                                 {isDone ? "✓" : i + 1}
                             </div>
@@ -60,7 +63,7 @@ function StepIndicator({ current }: { current: Step }) {
                                 {labels[i]}
                             </span>
                         </div>
-                    </React.Fragment>
+                    </div>
                 );
             })}
         </div>
@@ -75,20 +78,57 @@ export default function Home() {
     const [step, setStep] = useState<Step>("landing");
     const [processType, setProcessType] = useState<"batch" | "discrete">("batch");
     const [results, setResults] = useState<CapacityResults | null>(null);
+    const [costResults, setCostResults] = useState<CostResults | null>(null);
+    const [country, setCountry] = useState<string>("");
+
+    // Detect user country on mount via browser geolocation
+    useEffect(() => {
+        if (!navigator.geolocation) return;
+        navigator.geolocation.getCurrentPosition(
+            async (pos) => {
+                try {
+                    const { latitude, longitude } = pos.coords;
+                    const res = await fetch(
+                        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+                    );
+                    const data = await res.json();
+                    if (data.countryName) setCountry(data.countryName);
+                } catch {
+                    // silently ignore geocoding errors
+                }
+            },
+            () => { /* user denied — that's OK, AI will use global averages */ }
+        );
+    }, []);
 
     const handleBatchCalculate = (inputs: BatchInputs) => {
         setResults(calculateBatchCapacity(inputs));
+        setCostResults(null);
         setStep("results");
     };
 
     const handleDiscreteCalculate = (inputs: DiscreteInputs) => {
         setResults(calculateDiscreteCapacity(inputs));
+        setCostResults(null);
+        setStep("results");
+    };
+
+    const handleBatchCostCalculate = (inputs: BatchInputs, costInputs: CostInputs) => {
+        setResults(calculateBatchCapacity(inputs));
+        setCostResults(calculateBatchCost(inputs, costInputs));
+        setStep("results");
+    };
+
+    const handleDiscreteCostCalculate = (inputs: DiscreteInputs, costInputs: CostInputs) => {
+        setResults(calculateDiscreteCapacity(inputs));
+        setCostResults(calculateDiscreteCost(inputs, costInputs));
         setStep("results");
     };
 
     const handleReset = () => {
         setStep("landing");
         setResults(null);
+        setCostResults(null);
     };
 
     return (
@@ -126,31 +166,22 @@ export default function Home() {
                 <AnimatePresence mode="wait">
                     {step === "landing" && (
                         <motion.div key="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                            <LandingHero onStart={() => setStep("processType")} />
-                        </motion.div>
-                    )}
-
-                    {step === "processType" && (
-                        <motion.div key="processType" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                            <ProcessTypeSelector
-                                onSelect={(type) => {
-                                    setProcessType(type);
-                                    setStep("form");
-                                }}
-                                onBack={() => setStep("landing")}
-                            />
+                            <LandingHero onSelect={(type) => {
+                                setProcessType(type);
+                                setStep("form");
+                            }} />
                         </motion.div>
                     )}
 
                     {step === "form" && processType === "batch" && (
                         <motion.div key="batchForm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                            <BatchForm onCalculate={handleBatchCalculate} onBack={() => setStep("processType")} />
+                            <BatchForm onCalculate={handleBatchCalculate} onCostCalculate={handleBatchCostCalculate} country={country} onBack={() => setStep("landing")} />
                         </motion.div>
                     )}
 
                     {step === "form" && processType === "discrete" && (
                         <motion.div key="discreteForm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-                            <DiscreteForm onCalculate={handleDiscreteCalculate} onBack={() => setStep("processType")} />
+                            <DiscreteForm onCalculate={handleDiscreteCalculate} onCostCalculate={handleDiscreteCostCalculate} country={country} onBack={() => setStep("landing")} />
                         </motion.div>
                     )}
 
@@ -159,6 +190,7 @@ export default function Home() {
                             <ResultsPanel
                                 results={results}
                                 processType={processType}
+                                costResults={costResults}
                                 onBack={() => setStep("form")}
                                 onReset={handleReset}
                             />

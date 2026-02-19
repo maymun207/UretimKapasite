@@ -3,20 +3,18 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { Scan, Layers, Cpu, AlertTriangle, Languages, ArrowRight } from "lucide-react";
+import { Scan, Layers, Cpu, ArrowRight } from "lucide-react";
 
 interface LandingHeroProps {
-    onStart: () => void;
+    onSelect: (type: "batch" | "discrete") => void;
 }
 
-export default function LandingHero({ onStart }: LandingHeroProps) {
+export default function LandingHero({ onSelect }: LandingHeroProps) {
     const { t } = useTranslation();
 
     const features = [
-        { icon: Layers, titleKey: "landing.features.batch", descKey: "landing.features.batchDesc", color: "text-ardic-cyan" },
-        { icon: Cpu, titleKey: "landing.features.discrete", descKey: "landing.features.discreteDesc", color: "text-blue-400" },
-        { icon: AlertTriangle, titleKey: "landing.features.bottleneck", descKey: "landing.features.bottleneckDesc", color: "text-amber-400" },
-        { icon: Languages, titleKey: "landing.features.bilingual", descKey: "landing.features.bilingualDesc", color: "text-purple-400" },
+        { type: "batch" as const, icon: Layers, titleKey: "landing.features.batch", descKey: "landing.features.batchDesc", color: "text-ardic-cyan", glow: "hover:shadow-[0_0_25px_rgba(0,209,255,0.15)]" },
+        { type: "discrete" as const, icon: Cpu, titleKey: "landing.features.discrete", descKey: "landing.features.discreteDesc", color: "text-blue-400", glow: "hover:shadow-[0_0_25px_rgba(96,165,250,0.15)]" },
     ];
 
     return (
@@ -69,30 +67,21 @@ export default function LandingHero({ onStart }: LandingHeroProps) {
                 transition={{ duration: 0.6, delay: 0.45 }}
                 className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-12"
             >
-                {features.map((f, i) => (
-                    <div key={i} className="glass-card rounded-xl p-5 text-left hover:translate-y-[-2px] transition-all duration-300">
+                {features.map((f) => (
+                    <button
+                        key={f.type}
+                        onClick={() => onSelect(f.type)}
+                        className={`glass-card rounded-xl p-6 text-left hover:translate-y-[-2px] transition-all duration-300 cursor-pointer hover:border-white/15 ${f.glow} group`}
+                    >
                         <div className="flex items-center gap-3 mb-2">
                             <f.icon size={18} className={f.color} />
                             <span className="text-xs font-bold text-white/70 uppercase tracking-wider">{t(f.titleKey)}</span>
+                            <ArrowRight size={14} className="ml-auto text-white/15 group-hover:text-white/40 group-hover:translate-x-1 transition-all" />
                         </div>
                         <p className="text-[11px] text-white/35 leading-relaxed">{t(f.descKey)}</p>
-                    </div>
+                    </button>
                 ))}
             </motion.div>
-
-            {/* CTA */}
-            <motion.button
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={onStart}
-                className="btn-glow bg-gradient-to-r from-ardic-cyan to-ardic-blue-light text-white px-10 py-4 rounded-xl text-sm font-black uppercase tracking-[0.2em] hover:shadow-[0_0_40px_rgba(0,209,255,0.3)] transition-all duration-300 flex items-center gap-3 group"
-            >
-                {t("landing.cta")}
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
         </div>
     );
 }

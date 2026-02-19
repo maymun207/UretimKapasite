@@ -3,14 +3,13 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { ArrowLeft, HelpCircle, Plus, Trash2, Calculator } from "lucide-react";
-import { BatchInputs, BottleneckStep } from "@/lib/calculations";
+import { ArrowLeft, HelpCircle, Plus, Trash2, Calculator, DollarSign } from "lucide-react";
+import { BatchInputs, BottleneckStep, CostInputs, INDUSTRY_EXTRA_FIELDS } from "@/lib/calculations";
 import AISuggestButton, { AISuggestions } from "./AISuggestButton";
 
 /* ── Industry keys (must match en.json / tr.json) ────────────── */
 const INDUSTRIES = [
-    "chemical", "ceramic", "paint", "food", "pharma", "automotive",
-    "plastic", "packaging", "textile", "metal", "electronics", "glass",
+    "chemical", "ceramic", "paint", "food", "pharma", "glass",
 ];
 
 /* ── Tooltip ─────────────────────────────────────────────────── */
@@ -57,10 +56,12 @@ const NumberField = ({
 /* ── Batch Form ──────────────────────────────────────────────── */
 interface BatchFormProps {
     onCalculate: (inputs: BatchInputs) => void;
+    onCostCalculate: (inputs: BatchInputs, costInputs: CostInputs) => void;
+    country?: string;
     onBack: () => void;
 }
 
-export default function BatchForm({ onCalculate, onBack }: BatchFormProps) {
+export default function BatchForm({ onCalculate, onCostCalculate, country, onBack }: BatchFormProps) {
     const { t } = useTranslation();
 
     // Industry for AI
@@ -70,6 +71,7 @@ export default function BatchForm({ onCalculate, onBack }: BatchFormProps) {
     const [lines, setLines] = useState(1);
     const [shifts, setShifts] = useState(3);
     const [hoursPerShift, setHoursPerShift] = useState(8);
+    const [workingDaysPerWeek, setWorkingDaysPerWeek] = useState(5);
     const [availability, setAvailability] = useState(0.9);
     const [efficiency, setEfficiency] = useState(0.85);
     const [yieldRate, setYieldRate] = useState(0.95);
@@ -78,6 +80,15 @@ export default function BatchForm({ onCalculate, onBack }: BatchFormProps) {
     const [batchSize, setBatchSize] = useState(1000);
     const [batchTime, setBatchTime] = useState(4);
     const [downtime, setDowntime] = useState(0.5);
+
+    // Cost parameters
+    const [rawMaterialCost, setRawMaterialCost] = useState(50);
+    const [laborCostPerHour, setLaborCostPerHour] = useState(150);
+    const [workersPerShift, setWorkersPerShift] = useState(4);
+    const [energyRate, setEnergyRate] = useState(3.5);
+    const [machinePower, setMachinePower] = useState(25);
+    const [overheadRate, setOverheadRate] = useState(0.15);
+    const [industryExtra, setIndustryExtra] = useState(0);
 
     // Bottleneck steps
     const [steps, setSteps] = useState<BottleneckStep[]>([]);
@@ -98,11 +109,29 @@ export default function BatchForm({ onCalculate, onBack }: BatchFormProps) {
         if (suggestions.availability) setAvailability(suggestions.availability.value);
         if (suggestions.efficiency) setEfficiency(suggestions.efficiency.value);
         if (suggestions.yieldRate) setYieldRate(suggestions.yieldRate.value);
+        // Cost fields
+        if (suggestions.rawMaterialCost) setRawMaterialCost(suggestions.rawMaterialCost.value);
+        if (suggestions.laborCostPerHour) setLaborCostPerHour(suggestions.laborCostPerHour.value);
+        if (suggestions.energyRate) setEnergyRate(suggestions.energyRate.value);
+        if (suggestions.machinePower) setMachinePower(suggestions.machinePower.value);
+        if (suggestions.overheadRate) setOverheadRate(suggestions.overheadRate.value);
     };
+
+    const getCapacityInputs = (): BatchInputs => ({
+        lines, shifts, hoursPerShift, batchSize, batchTime, downtime, availability, efficiency, yieldRate, workingDaysPerWeek, steps,
+    });
+
+    const getCostInputs = (): CostInputs => ({
+        rawMaterialCost, laborCostPerHour, workersPerShift, energyRate, machinePower, overheadRate, industryExtra,
+    });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        onCalculate({ lines, shifts, hoursPerShift, batchSize, batchTime, downtime, availability, efficiency, yieldRate, steps });
+        onCalculate(getCapacityInputs());
+    };
+
+    const handleCostSubmit = () => {
+        onCostCalculate(getCapacityInputs(), getCostInputs());
     };
 
     return (
@@ -142,6 +171,7 @@ export default function BatchForm({ onCalculate, onBack }: BatchFormProps) {
                     <AISuggestButton
                         industry={industry ? t(`industries.${industry}`) : ""}
                         processType="batch"
+                        country={country}
                         onApply={handleAISuggestions}
                     />
                 </div>
@@ -149,10 +179,11 @@ export default function BatchForm({ onCalculate, onBack }: BatchFormProps) {
 
             {/* Common parameters */}
             <div className="glass-card rounded-2xl p-6 md:p-8 mb-6">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                     <NumberField label={t("form.common.lines")} tooltip={t("form.common.linesTooltip")} value={lines} onChange={setLines} min={1} />
                     <NumberField label={t("form.common.shifts")} tooltip={t("form.common.shiftsTooltip")} value={shifts} onChange={setShifts} min={1} max={4} />
                     <NumberField label={t("form.common.hoursPerShift")} tooltip={t("form.common.hoursTooltip")} value={hoursPerShift} onChange={setHoursPerShift} min={1} max={12} unit="hr" />
+                    <NumberField label={t("form.common.workingDays")} tooltip={t("form.common.workingDaysTooltip")} value={workingDaysPerWeek} onChange={setWorkingDaysPerWeek} min={1} max={7} unit={t("form.common.workingDaysUnit")} />
                 </div>
             </div>
 
@@ -168,12 +199,45 @@ export default function BatchForm({ onCalculate, onBack }: BatchFormProps) {
 
             {/* OEE factors */}
             <div className="glass-card rounded-2xl p-6 md:p-8 mb-6">
-                <h3 className="text-xs font-black text-purple-400/60 uppercase tracking-[0.2em] mb-5">OEE</h3>
+                <div className="flex items-center justify-between mb-5">
+                    <h3 className="text-xs font-black text-purple-400/60 uppercase tracking-[0.2em]">OEE</h3>
+                    <span className="text-sm font-black tabular-nums text-purple-400">
+                        {(availability * efficiency * yieldRate * 100).toFixed(1)}%
+                    </span>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     <NumberField label={t("form.common.availability")} tooltip={t("form.common.availabilityTooltip")} value={availability} onChange={setAvailability} min={0} max={1} step={0.01} />
                     <NumberField label={t("form.common.efficiency")} tooltip={t("form.common.efficiencyTooltip")} value={efficiency} onChange={setEfficiency} min={0} max={1} step={0.01} />
                     <NumberField label={t("form.common.yieldRate")} tooltip={t("form.common.yieldTooltip")} value={yieldRate} onChange={setYieldRate} min={0} max={1} step={0.01} />
                 </div>
+            </div>
+
+            {/* Cost Parameters */}
+            <div className="glass-card rounded-2xl p-6 md:p-8 mb-6">
+                <h3 className="text-xs font-black text-emerald-400/60 uppercase tracking-[0.2em] mb-5">{t("cost.sectionTitle")}</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <NumberField label={t("cost.rawMaterial")} tooltip={t("cost.rawMaterialTooltipBatch")} value={rawMaterialCost} onChange={setRawMaterialCost} min={0} step={1} unit={t("cost.rawMaterialUnitBatch")} />
+                    <NumberField label={t("cost.laborCost")} tooltip={t("cost.laborCostTooltip")} value={laborCostPerHour} onChange={setLaborCostPerHour} min={0} step={1} unit={t("cost.laborCostUnit")} />
+                    <NumberField label={t("cost.workers")} tooltip={t("cost.workersTooltip")} value={workersPerShift} onChange={setWorkersPerShift} min={1} step={1} />
+                    <NumberField label={t("cost.energyRate")} tooltip={t("cost.energyRateTooltip")} value={energyRate} onChange={setEnergyRate} min={0} step={0.1} unit={t("cost.energyRateUnit")} />
+                    <NumberField label={t("cost.machinePower")} tooltip={t("cost.machinePowerTooltip")} value={machinePower} onChange={setMachinePower} min={0} step={1} unit={t("cost.machinePowerUnit")} />
+                    <NumberField label={t("cost.overheadRate")} tooltip={t("cost.overheadRateTooltip")} value={overheadRate} onChange={setOverheadRate} min={0} max={1} step={0.01} unit={t("cost.overheadRateUnit")} />
+                </div>
+                {industry && INDUSTRY_EXTRA_FIELDS[industry] && (
+                    <div className="mt-5 pt-5 border-t border-white/5">
+                        <div className="max-w-xs">
+                            <NumberField
+                                label={t(INDUSTRY_EXTRA_FIELDS[industry].labelKey)}
+                                tooltip={t(INDUSTRY_EXTRA_FIELDS[industry].labelKey)}
+                                value={industryExtra}
+                                onChange={setIndustryExtra}
+                                min={0}
+                                step={0.1}
+                                unit={INDUSTRY_EXTRA_FIELDS[industry].unit}
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Bottleneck steps */}
@@ -215,10 +279,16 @@ export default function BatchForm({ onCalculate, onBack }: BatchFormProps) {
                 <button type="button" onClick={onBack} className="flex items-center gap-2 text-xs text-white/30 hover:text-white/60 transition-colors font-bold uppercase tracking-wider">
                     <ArrowLeft size={14} /> {t("form.back")}
                 </button>
-                <button type="submit" className="btn-glow bg-gradient-to-r from-ardic-cyan to-ardic-blue-light text-white px-8 py-3.5 rounded-xl text-xs font-black uppercase tracking-[0.2em] hover:shadow-[0_0_30px_rgba(0,209,255,0.3)] transition-all duration-300 flex items-center gap-2.5 group">
-                    <Calculator size={14} />
-                    {t("form.calculate")}
-                </button>
+                <div className="flex items-center gap-3">
+                    <button type="submit" className="btn-glow bg-gradient-to-r from-ardic-cyan to-ardic-blue-light text-white px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-[0.15em] hover:shadow-[0_0_30px_rgba(0,209,255,0.3)] transition-all duration-300 flex items-center gap-2 group">
+                        <Calculator size={14} />
+                        {t("form.calculate")}
+                    </button>
+                    <button type="button" onClick={handleCostSubmit} className="btn-glow bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-[0.15em] hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all duration-300 flex items-center gap-2 group">
+                        <DollarSign size={14} />
+                        {t("form.calculateCost")}
+                    </button>
+                </div>
             </div>
         </motion.form>
     );

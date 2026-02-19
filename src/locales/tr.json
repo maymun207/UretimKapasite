@@ -9,17 +9,15 @@
     },
     "landing": {
         "badge": "Kapasite Zekası Modeli 5.0",
-        "headline": "Üretim Kapasite Hesaplayıcı",
-        "description": "Teorik üretim kapasitenizi gerçek çıktınızla hesaplayın ve karşılaştırın. Kesikli süreç endüstrileri ve ayrık/sürekli üretim desteklenir.",
+        "headline": "Üretim Kapasite & Maliyet Hesaplayıcı",
+        "description": "Teorik üretim kapasitenizi gerçek çıktınızla hesaplayın ve birim başına üretim maliyetini tahmin edin. Kesikli ve ayrık üretim desteklenir.",
         "features": {
             "batch": "Kesikli Süreç Analizi",
             "batchDesc": "Kimya, seramik, boya, gıda & içecek, ilaç",
-            "discrete": "Ayrık Süreç",
+            "discrete": "Ayrık Süreç Analizi",
             "discreteDesc": "Montaj hatları, CNC işleme, paketleme",
-            "bottleneck": "Darboğaz Tespiti",
-            "bottleneckDesc": "Üretim zincirinizin en zayıf halkasını bulun",
-            "bilingual": "Çift Dil Desteği",
-            "bilingualDesc": "Tam İngilizce ve Türkçe arayüz"
+            "cost": "Birim Maliyet Analizi",
+            "costDesc": "Detaylı dağılımla birim başına üretim maliyetini hesaplayın"
         },
         "cta": "Hesaplamaya Başla"
     },
@@ -49,6 +47,9 @@
             "shiftsTooltip": "24 saatlik dönemdeki iş vardiyası sayısı",
             "hoursPerShift": "Vardiya Başına Saat",
             "hoursTooltip": "Her vardiyada üretken saat sayısı",
+            "workingDays": "Haftalık Çalışma Günü",
+            "workingDaysTooltip": "Haftada kaç gün çalışılıyor (ör. 5, 6 veya 7)",
+            "workingDaysUnit": "gün/hft",
             "availability": "Kullanılabilirlik Faktörü (A)",
             "availabilityTooltip": "Planlanan sürenin ekipmanın kullanılabilir olduğu oranı (0–1). Arızaları ve plansız duruşları hesaplar.",
             "efficiency": "Verimlilik Faktörü (E)",
@@ -88,6 +89,7 @@
             "removeStation": "Kaldır"
         },
         "calculate": "Kapasiteyi Hesapla",
+        "calculateCost": "Birim Maliyeti Hesapla",
         "back": "Geri"
     },
     "results": {
@@ -106,6 +108,18 @@
         "bottleneckCapacity": "Kısıtlayıcı kapasite",
         "noBottleneck": "Darboğaz verisi sağlanmadı",
         "unitsPerPeriod": "birim/gün",
+        "periods": {
+            "day": "Gün",
+            "week": "Hafta",
+            "month": "Ay",
+            "year": "Yıl"
+        },
+        "units": {
+            "day": "birim/gün",
+            "week": "birim/hft",
+            "month": "birim/ay",
+            "year": "birim/yıl"
+        },
         "chart": {
             "title": "Kapasite Karşılaştırması",
             "theoretical": "Teorik",
@@ -117,11 +131,63 @@
         "newCalculation": "Yeni Hesaplama",
         "back": "Geri"
     },
+    "cost": {
+        "sectionTitle": "Maliyet Parametreleri",
+        "rawMaterial": "Hammadde Maliyeti",
+        "rawMaterialTooltipBatch": "Parti başına toplam hammadde maliyeti",
+        "rawMaterialTooltipDiscrete": "Birim başına hammadde maliyeti",
+        "rawMaterialUnitBatch": "$/parti",
+        "rawMaterialUnitDiscrete": "$/birim",
+        "laborCost": "İşçilik Maliyeti",
+        "laborCostTooltip": "İşçi başına saatlik ücret",
+        "laborCostUnit": "$/sa",
+        "workers": "Vardiya Başına İşçi",
+        "workersTooltip": "Her vardiyada çalışan işçi sayısı",
+        "energyRate": "Enerji Birim Fiyatı",
+        "energyRateTooltip": "Kilowatt-saat başına elektrik maliyeti",
+        "energyRateUnit": "$/kWh",
+        "machinePower": "Makine Gücü",
+        "machinePowerTooltip": "Üretim ekipmanının ortalama güç tüketimi",
+        "machinePowerUnit": "kW",
+        "overheadRate": "Genel Gider Oranı",
+        "overheadRateTooltip": "Doğrudan maliyetlerin yüzdesi olarak dolaylı maliyetler (tesis, yönetim, sigorta)",
+        "overheadRateUnit": "%",
+        "extra": {
+            "wasteDisposal": "Atık Bertaraf Maliyeti",
+            "coldStorage": "Soğuk Depolama Maliyeti",
+            "qcCompliance": "KK / Uyumluluk Maliyeti",
+            "kilnFurnace": "Fırın Maliyeti",
+            "tooling": "Takım Maliyeti",
+            "componentBOM": "Komponent BOM Maliyeti",
+            "moldAmortization": "Kalıp Amortismanı",
+            "cuttingWaste": "Kesim Fire Oranı",
+            "printSetup": "Baskı Kurulum Maliyeti"
+        },
+        "results": {
+            "title": "Birim Maliyet Dağılımı",
+            "unitCost": "Birim Maliyet",
+            "unitCostDesc": "Birim başına toplam üretim maliyeti",
+            "material": "Malzeme",
+            "materialDesc": "Birim başına hammadde maliyeti",
+            "labor": "İşçilik",
+            "laborDesc": "Birim başına doğrudan işçilik maliyeti",
+            "energy": "Enerji",
+            "energyDesc": "Birim başına enerji maliyeti",
+            "overhead": "Genel Gider",
+            "overheadDesc": "Birim başına dolaylı maliyetler",
+            "industry": "Sektörel Ek",
+            "industryDesc": "Birim başına sektöre özel maliyet",
+            "dailyTotal": "Günlük Toplam Maliyet",
+            "dailyTotalDesc": "Tahmini günlük toplam üretim maliyeti",
+            "currency": "$"
+        }
+    },
     "ai": {
         "suggest": "AI'ya Sor",
         "panelTitle": "AI Önerileri",
         "thinking": "Gemini sektörünüzü analiz ediyor...",
         "applyAll": "Tüm Önerileri Uygula",
+        "dismiss": "Kapat",
         "selectIndustryFirst": "Lütfen önce bir sektör seçin.",
         "industryLabel": "Sektör / Endüstri",
         "industryPlaceholder": "Sektörünüzü seçin..."

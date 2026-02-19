@@ -9,17 +9,15 @@
     },
     "landing": {
         "badge": "Capacity Intelligence Model 5.0",
-        "headline": "Manufacturing Capacity Calculator",
-        "description": "Calculate and compare your theoretical production capacity versus actual output. Supports batch-process industries and discrete/continuous manufacturing.",
+        "headline": "Manufacturing Capacity & Cost Calculator",
+        "description": "Calculate your theoretical production capacity versus actual output, and estimate per-unit manufacturing costs. Supports batch-process and discrete manufacturing.",
         "features": {
             "batch": "Batch Process Analysis",
             "batchDesc": "Chemical, ceramic, paint, food & beverage, pharma",
-            "discrete": "Discrete Process",
+            "discrete": "Discrete Process Analysis",
             "discreteDesc": "Assembly lines, CNC machining, packaging",
-            "bottleneck": "Bottleneck Detection",
-            "bottleneckDesc": "Identify the weakest link in your production chain",
-            "bilingual": "Bilingual Support",
-            "bilingualDesc": "Full English and Turkish interface"
+            "cost": "Unit Cost Analysis",
+            "costDesc": "Calculate per-unit production cost with full breakdown"
         },
         "cta": "Start Calculation"
     },
@@ -49,6 +47,9 @@
             "shiftsTooltip": "Number of work shifts in a 24-hour period",
             "hoursPerShift": "Hours per Shift",
             "hoursTooltip": "Productive hours in each shift",
+            "workingDays": "Working Days / Week",
+            "workingDaysTooltip": "Number of working days per week (e.g. 5, 6, or 7)",
+            "workingDaysUnit": "days/wk",
             "availability": "Availability Factor (A)",
             "availabilityTooltip": "Proportion of scheduled time the equipment is available (0–1). Accounts for breakdowns and unplanned stops.",
             "efficiency": "Efficiency Factor (E)",
@@ -88,6 +89,7 @@
             "removeStation": "Remove"
         },
         "calculate": "Calculate Capacity",
+        "calculateCost": "Calculate Unit Cost",
         "back": "Back"
     },
     "results": {
@@ -106,6 +108,18 @@
         "bottleneckCapacity": "Limiting capacity",
         "noBottleneck": "No bottleneck data provided",
         "unitsPerPeriod": "units/day",
+        "periods": {
+            "day": "Day",
+            "week": "Week",
+            "month": "Month",
+            "year": "Year"
+        },
+        "units": {
+            "day": "units/day",
+            "week": "units/wk",
+            "month": "units/mo",
+            "year": "units/yr"
+        },
         "chart": {
             "title": "Capacity Comparison",
             "theoretical": "Theoretical",
@@ -117,11 +131,63 @@
         "newCalculation": "New Calculation",
         "back": "Back"
     },
+    "cost": {
+        "sectionTitle": "Cost Parameters",
+        "rawMaterial": "Raw Material Cost",
+        "rawMaterialTooltipBatch": "Total raw material cost per batch",
+        "rawMaterialTooltipDiscrete": "Raw material cost per unit",
+        "rawMaterialUnitBatch": "$/batch",
+        "rawMaterialUnitDiscrete": "$/unit",
+        "laborCost": "Labor Cost",
+        "laborCostTooltip": "Hourly wage per worker",
+        "laborCostUnit": "$/hr",
+        "workers": "Workers / Shift",
+        "workersTooltip": "Number of workers per shift",
+        "energyRate": "Energy Rate",
+        "energyRateTooltip": "Electricity cost per kilowatt-hour",
+        "energyRateUnit": "$/kWh",
+        "machinePower": "Machine Power",
+        "machinePowerTooltip": "Average power consumption of production equipment",
+        "machinePowerUnit": "kW",
+        "overheadRate": "Overhead Rate",
+        "overheadRateTooltip": "Indirect costs as a percentage of direct costs (facility, admin, insurance)",
+        "overheadRateUnit": "%",
+        "extra": {
+            "wasteDisposal": "Waste Disposal Cost",
+            "coldStorage": "Cold Storage Cost",
+            "qcCompliance": "QC / Compliance Cost",
+            "kilnFurnace": "Kiln / Furnace Cost",
+            "tooling": "Tooling Cost",
+            "componentBOM": "Component BOM Cost",
+            "moldAmortization": "Mold Amortization",
+            "cuttingWaste": "Cutting Waste Rate",
+            "printSetup": "Print Setup Cost"
+        },
+        "results": {
+            "title": "Unit Cost Breakdown",
+            "unitCost": "Unit Cost",
+            "unitCostDesc": "Total production cost per unit",
+            "material": "Material",
+            "materialDesc": "Raw material cost per unit",
+            "labor": "Labor",
+            "laborDesc": "Direct labor cost per unit",
+            "energy": "Energy",
+            "energyDesc": "Energy cost per unit",
+            "overhead": "Overhead",
+            "overheadDesc": "Indirect costs per unit",
+            "industry": "Industry Extra",
+            "industryDesc": "Industry-specific cost per unit",
+            "dailyTotal": "Total Daily Cost",
+            "dailyTotalDesc": "Estimated total production cost per day",
+            "currency": "$"
+        }
+    },
     "ai": {
         "suggest": "Ask AI",
         "panelTitle": "AI Suggestions",
         "thinking": "Gemini is analyzing your industry...",
         "applyAll": "Accept All Suggestions",
+        "dismiss": "Dismiss",
         "selectIndustryFirst": "Please select an industry first.",
         "industryLabel": "Industry / Sector",
         "industryPlaceholder": "Select your industry..."
